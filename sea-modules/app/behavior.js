@@ -3,17 +3,27 @@
  * @author Shann
  */
 define(function(require, exports, module) {
-
-    var _tdW = 99;
+    
+    // 单元格的宽度
+    var _tdW = 99; 
+    
+    // 滑动范围的总宽度，这里先定义变量
     var _slideContainerWidth = 0;
+    
+    // 获取日历范围
     var _calendar = getDateRange();
+    
+    // 实例化模板模块对象
     var V = require('app/template-block');
     
+    /**
+     * 需要初始化的函数调用
+     * @author Shann
+     */
     function init(){
         bindResizableUI();
         bindDraggableUI();
         bindPageResizeEvent();
-//      bindEditEmployeeEvent();
         bindBlockEvent();
     }
     
@@ -22,7 +32,7 @@ define(function(require, exports, module) {
      * @author Shann
      */
     function bindBlockEvent(){
-        var tpl = V.fetchEditbox();
+        var tpl = V.fetchEditModal();
         $('body').on('dblclick', '.ganttview-block', function(){
             $('.unique').remove();
             $('body').append($(tpl).addClass('unique'));
@@ -40,21 +50,28 @@ define(function(require, exports, module) {
             bindDraggableUI();
         })
     }
-
+    
+    /**
+     * 让所有带.ui-resizable类的元素有重置大小效果
+     * @author Shann
+     */
     function bindResizableUI() {
         $('.ui-resizable').resizable({
             maxHeight: 92,
             grid: 100
         });
     }
-
+    
+    /**
+     * 让所有带.ui-draggable类的元素有拖动效果
+     * @author Shann
+     */
     function bindDraggableUI() {
         $('.ui-draggable').draggable({
             axis: 'x',
             grid: [100, 100]
         });
     }
-   
 
     /**
      * 生成日历数组
@@ -76,30 +93,12 @@ define(function(require, exports, module) {
         return calendar;
     }
 
-    /*function bindHeaderEvent() {
-        $('#create-lesson-button').click(function() {
-            var L = require("app/layout");
-            var html = L.renderLessons();
-            $('body').append(html);
-            bindDeleteButtonEvent();
-        });
-    }*/
-
-    /*function bindDeleteButtonEvent() {
-        $('[data-role="delete-button"]').click(function() {
-            alert("I am delete button.");
-        });
-    }*/
-    
-
     /**
      * 编辑讲师操作
      * @author Shann
      */
     function bindEditEmployeeEvent() {
-        
         $('.edit-employee').dblclick(function() {
-            
             var row1 = $('<div>',{
                 class:'row'
             }).html(123);
@@ -114,82 +113,13 @@ define(function(require, exports, module) {
             $(this).append(box);
             bindResizableUI();
             bindDraggableUI();
-//          var tpl = require("app/layout").renderEditbox();
-//          $('body').append(tpl);
-//          var td = $(this),
-//              tdTop = td.offset().top,
-//              tdLeft = td.offset().left,
-//              tdW = td.width(),
-//              tdH = td.height(),
-//              sw = $('[data-role="select-worktype"]'),
-//              sl = $('[data-role="select-lecturer"]');
-//
-//          $('[data-role="editbox"]').css({
-//              top: tdTop,
-//              left: tdLeft,
-//              width: (tdW + 19),
-//              height: (tdH + 19)
-//          }).removeAttr('hidden').find('[data-role="close-button"]').click(function() {
-//              $('[data-role="editbox"]').remove();
-//          });
-//          var v1 = '选择工作',
-//              v2 = '选择讲师';
-//          sw.change(function() {
-//              v1 = $(this).val();
-//              if (v1 != '选择工作' && v2 != '选择讲师') {
-//                  td.html(v1 + '<br/>' + v2);
-//                  $('[data-role="editbox"]').remove();
-//              }
-//          });
-//          sl.change(function() {
-//              v2 = $(this).val();
-//              if (v1 != '选择工作' && v2 != '选择讲师') {
-//                  td.html(v1 + '<br/>' + v2);
-//                  $('[data-role="editbox"]').remove();
-//              }
-//          });
         })
     }
-   
-    /**
-     * 选中讲师操作
-     * @author Shann
-     */
-    /*function bindLecturerSelectEvent() {
-        $('[data-role="lecturer"]').click(function() {
-            var findStr = $.trim($(this).text());
-            var highlightColor = $(this).attr('bgcolor');
-            $('[data-role="edit-employee"]').each(function() {
-                var tdText = $(this).text();
-                if (tdText.indexOf(findStr) != -1) {
-                    $(this).css({
-                        background: highlightColor,
-                        color: '#fff'
-                    });
-                }
-            })
-        })
-    }*/
-
-    /**
-     * 重置操作
-     * @author Shann
-     */
-    /*function bindResetButtonEvent() {
-        $('[data-role="reset-button"]').click(function() {
-            var addEmployee = $(this).parent().siblings('[data-role="edit-employee"]');
-            addEmployee.css('background', 'none').empty();
-        });
-    }*/
-
+    
+    // 对外提供函数接口
     return {
         init: init,
         calendar: _calendar,
         slideContainerWidth: _slideContainerWidth
-            //      bindHeaderEvent: bindHeaderEvent,
-            //      bindResetButtonEvent: bindResetButtonEvent,
-            //      bindLecturerSelectEvent: bindLecturerSelectEvent,
-            //      bindEditEmployeeEvent: bindEditEmployeeEvent,
-            //      bindDragEmployeeEvent: bindDragEmployeeEvent
     }
 })

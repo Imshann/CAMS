@@ -8,16 +8,7 @@ define(function(require, exports, module) {
     
     renderLectureList();
     renderLessons();
-    /**
-     * 头部
-     * @author Shann
-     */
-    //  function renderHeader() {
-    //      var tpl = require("../templates/header.html");
-    //      $('body').append(tpl);
-    //      B.bindHeaderEvent();
-    //  }
-
+ 
     /**
      * 讲师列表
      * @author Shann
@@ -55,38 +46,5 @@ define(function(require, exports, module) {
             html = Handlebars.compile(tpl)(data);
         $('#calendar').width(B.slideContainerWidth).append(html);
     }
-
-    /**
-     * 编辑框
-     * @author Shann
-     */
-    //  function renderEditbox() {
-    //      var tpl = require("../templates/editbox.html"),
-    //          data = require('http://127.0.0.1:8020/CAMS/data/lecturer.json'),
-    //          html = Handlebars.compile(tpl)(data);
-    //      return html;
-    //  }
-
-    /**
-     * 行块
-     * @author Shann
-     */
-    //  function renderBlock() {
-    //      var tpl = require("../templates/block.html"),
-    //          html = Handlebars.compile(tpl)();
-    //      return html;
-    //  }
-
-        //  renderHeader();
-
-    //      renderLessons();
-    //      renderEditbox();
-    //    
-    //      return {
-    //          renderLessons: renderLessons,
-    //          renderEditbox: renderEditbox,
-    //          renderBlock: renderBlock
-    //      }
-    
-    
+ 
 });
