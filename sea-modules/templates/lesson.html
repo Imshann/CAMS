@@ -1,0 +1,99 @@
+<div class="row ganttview">
+    <div class="col-md-2 ganttview-vtheader">
+        {{#each lessons}}
+        <div class="row ganttview-vtheader-item">
+            <div class="col-md-6 ganttview-vtheader-item-name">{{lesson_name}}</div>
+            <div class="col-md-6 ganttview-vtheader-item-series">
+                <div class="row">上午</div>
+                <div class="row">下午</div>
+                <div class="row">晚上</div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <div class="col-md-10 ganttview-slide-container">
+        <div class="row ganttview-hzheader" id="calendar"></div>
+        <div class="row ganttview-grid">
+            {{#each lessons}}
+            <div class="row ganttview-grid-row">
+                {{#each ../calendar}} {{#each days}}
+                <div class="ganttview-grid-row-cell"></div>
+                {{/each}} {{/each}}
+            </div>
+            <div class="row ganttview-grid-row">
+                {{#each ../calendar}} {{#each days}}
+                <div class="ganttview-grid-row-cell"></div>
+                {{/each}} {{/each}}
+            </div>
+            <div class="row ganttview-grid-row">
+                {{#each ../calendar}} {{#each days}}
+                <div class="ganttview-grid-row-cell"></div>
+                {{/each}} {{/each}}
+            </div>
+            {{/each}}
+        </div>
+        <div class="row ganttview-blocks">
+            {{#each lessons}}
+            <div class="row ganttview-block-container edit-employee">
+                <div class="ganttview-block ui-resizable ui-draggable">
+                    <div class="row">讲课</div>
+                    <div class="row">黄尚任</div>
+                </div>
+            </div>
+            <div class="row ganttview-block-container edit-employee">
+                <div class="ganttview-block ui-resizable ui-draggable">
+                    <div class="row">讲课</div>
+                    <div class="row">黄尚任</div>
+                </div>
+            </div>
+            <div class="row ganttview-block-container edit-employee">
+                <div class="ganttview-block ui-resizable ui-draggable">
+                    <div class="row">讲课</div>
+                    <div class="row">黄尚任</div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+<!--<table class="table table-bordered wd-table">
+    {{#each lessons}}
+    <tr class="wd-tr">
+        <th rowspan="3" class="wd-lesson">{{lesson_name}}</th>
+        <td width="100">上午</td>
+        {{#each up}}
+        <td data-role="edit-employee" class="wd-btn">
+            <!--{{work_type}}
+            <br /> {{lecturer_name}}
+        </td>
+        {{/each}}
+        <td width="100">
+            <button type="button" class="btn btn-danger" data-role="reset-button">重置</button>
+        </td>
+    </tr>
+    <tr class="wd-tr">
+        <td>下午</td>
+        {{#each center}}
+        <td data-role="edit-employee" class="wd-btn">
+            <!--{{work_type}}
+            <br /> {{lecturer_name}}
+        </td>
+        {{/each}}
+        <td>
+            <button type="button" class="btn btn-danger" data-role="reset-button">重置</button>
+        </td>
+    </tr>
+    <tr class="wd-tr">
+        <td>晚上</td>
+        {{#each down}}
+        <td data-role="edit-employee" class="wd-btn">
+            <!--{{work_type}}
+            <br /> {{lecturer_name}}
+        </td>
+        {{/each}}
+        <td>
+            <button type="button" class="btn btn-danger" data-role="reset-button">重置</button>
+        </td>
+    </tr>
+    {{/each}}
+</table>-->

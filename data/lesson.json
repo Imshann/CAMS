@@ -1,0 +1,52 @@
+{
+    lessons:[
+        {
+            "lesson_name":"A1516",
+            "up":[
+                {"lecturer_name":"", "work_type": ""},
+                {"lecturer_name":"", "work_type": ""},
+                {"lecturer_name":"", "work_type": ""},
+                {"lecturer_name":"", "work_type": ""},
+                {"lecturer_name":"", "work_type": ""}
+            ],
+            "center":[
+                {"lecturer_name":"林雪", "work_type": "坐班"},
+                {"lecturer_name":"林雪", "work_type": "坐班"},
+                {"lecturer_name":"林雪", "work_type": "坐班"},
+                {"lecturer_name":"林雪", "work_type": "坐班"},
+                {"lecturer_name":"林雪", "work_type": "坐班"}
+            ],
+            "down":[
+                {"lecturer_name":"林佳生", "work_type": "坐班"},
+                {"lecturer_name":"林佳生", "work_type": "坐班"},
+                {"lecturer_name":"林佳生", "work_type": "坐班"},
+                {"lecturer_name":"林佳生", "work_type": "坐班"},
+                {"lecturer_name":"林佳生", "work_type": "坐班"}
+            ]
+        },
+        {
+            "lesson_name":"A1518",
+            "up":[
+                {"lecturer_name":"", "work_type": ""},
+                {"lecturer_name":"", "work_type": ""},
+                {"lecturer_name":"", "work_type": ""},
+                {"lecturer_name":"", "work_type": ""},
+                {"lecturer_name":"", "work_type": ""}
+            ],
+            "center":[
+                {"lecturer_name":"林雪", "work_type": "坐班"},
+                {"lecturer_name":"林雪", "work_type": "坐班"},
+                {"lecturer_name":"林雪", "work_type": "坐班"},
+                {"lecturer_name":"林雪", "work_type": "坐班"},
+                {"lecturer_name":"林雪", "work_type": "坐班"}
+            ],
+            "down":[
+                {"lecturer_name":"林佳生", "work_type": "坐班"},
+                {"lecturer_name":"林佳生", "work_type": "坐班"},
+                {"lecturer_name":"林佳生", "work_type": "坐班"},
+                {"lecturer_name":"林佳生", "work_type": "坐班"},
+                {"lecturer_name":"林佳生", "work_type": "坐班"}
+            ]
+        }
+    ]
+}

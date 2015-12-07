@@ -1,0 +1,14 @@
+<div class="row ganttview-hzheader-months">
+    {{#each this}}
+    <div class="ganttview-hzheader-month" style="width:{{width}}px">
+        {{months}}/2015
+    </div>
+    {{/each}}
+</div>
+<div class="row ganttview-hzheader-days">
+    {{#each this}}
+        {{#each this.days}}
+        <div class="ganttview-hzheader-day">{{this}}</div>
+        {{/each}}
+    {{/each}}
+</div>
