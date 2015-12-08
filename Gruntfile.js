@@ -8,6 +8,7 @@ module.exports = function(grunt) {
                 src: [
                     'sea-modules/bootstrap/3.3.5/css/bootstrap.min.css',
                     'sea-modules/bootstrap/3.3.5/css/bootstrap-theme.min.css',
+                    'sea-modules/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css',
                     'sea-modules/jquery-ui/1.11.4/jquery-ui.min.css',
                     'src/**/*.css'
                 ],
@@ -17,7 +18,8 @@ module.exports = function(grunt) {
                 src: [
                     'sea-modules/jquery/1.11.1/jquery.min.js',
                     'sea-modules/jquery-ui/1.11.4/jquery-ui.min.js',
-                    'sea-modules/bootstrap/3.3.5/js/bootstrap.min.js',
+                    'sea-modules/bootstrap/3.3.5/js/bootstrap.min.js',s
+                    'sea-modules/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js',
                     'sea-modules/seajs/3.0.0/sea.js',
                     'sea-modules/seajs/3.0.0/seajs-preload.js',
                     'sea-modules/seajs/3.0.0/seajs-text.js',

@@ -3,41 +3,79 @@
  * @author Shann
  */
 define(function(require, exports, module) {
-    
+
     // 单元格的宽度
-    var _tdW = 99; 
-    
+    var _tdW = 99;
+
     // 滑动范围的总宽度，这里先定义变量
     var _slideContainerWidth = 0;
-    
+
     // 获取日历范围
     var _calendar = getDateRange();
-    
+
     // 实例化模板模块对象
     var V = require('app/template-block');
-    
+
     /**
      * 需要初始化的函数调用
      * @author Shann
      */
-    function init(){
+    function init() {
         bindResizableUI();
         bindDraggableUI();
         bindPageResizeEvent();
         bindBlockEvent();
+        bindAddWorkEvent();
     }
-    
+
+    /**
+     * 安排工作
+     * @author Shann
+     */
+    function bindAddWorkEvent() {
+        $('#add-work').click(function() {
+            var data = require('http://127.0.0.1:8020/CAMS/data/lecturer.json'),
+                tpl = V.fetchAddWorkModal(data);
+            $('.unique').remove();
+            $('body').append($(tpl).addClass('unique'));
+
+            // 时间插件
+            $('.datetimepicker').datetimepicker({
+                format: 'yyyy-mm-d',
+                minView: 2,
+                autoclose: true
+            });
+
+            // 显示模态框
+            $('#add-work-modal').modal().on('hidden.bs.modal', function(e) {
+                var workType = $('#select-work-type').val(),
+                    lecturer = $('#select-lecturer').val();
+                
+            });
+        })
+    }
+
     /**
      * 给拖动块绑定鼠标双击事件
      * @author Shann
      */
-    function bindBlockEvent(){
-        var tpl = V.fetchEditModal();
-        $('body').on('dblclick', '.ganttview-block', function(){
+    function bindBlockEvent() {
+        $('body').on('dblclick', '.editbox', function() {
+            var data = require('http://127.0.0.1:8020/CAMS/data/lecturer.json'),
+                tpl = V.fetchEditModal(data),
+                row1 = $(this).children().eq(0),
+                row2 = $(this).children().eq(1);
             $('.unique').remove();
             $('body').append($(tpl).addClass('unique'));
-            return false;
+            $('#my-modal').modal();
+            $('#my-modal').on('hidden.bs.modal', function(e) {
+                var workType = $('#select-work-type').val(),
+                    lecturer = $('#select-lecturer').val();
+                row1.html(workType);
+                row2.html(lecturer);
+            })
         });
+
     }
 
     /**
@@ -50,7 +88,7 @@ define(function(require, exports, module) {
             bindDraggableUI();
         })
     }
-    
+
     /**
      * 让所有带.ui-resizable类的元素有重置大小效果
      * @author Shann
@@ -61,7 +99,7 @@ define(function(require, exports, module) {
             grid: 100
         });
     }
-    
+
     /**
      * 让所有带.ui-draggable类的元素有拖动效果
      * @author Shann
@@ -79,7 +117,7 @@ define(function(require, exports, module) {
      */
     function getDateRange() {
         var calendar = [];
-        for (var i = 1; i <= 12; i++) {
+        for (var i = 11; i <= 12; i++) {
             calendar.push({
                 months: i
             })
@@ -99,14 +137,14 @@ define(function(require, exports, module) {
      */
     function bindEditEmployeeEvent() {
         $('.edit-employee').dblclick(function() {
-            var row1 = $('<div>',{
-                class:'row'
+            var row1 = $('<div>', {
+                class: 'row'
             }).html(123);
-            var row2 = $('<div>',{
-                class:'row'
+            var row2 = $('<div>', {
+                class: 'row'
             }).html(456);
             var box = $('<div>', {
-                class: 'ganttview-block ui-resizable ui-draggable'  
+                class: 'ganttview-block ui-resizable ui-draggable'
             });
             box.append(row1);
             box.append(row2);
@@ -115,7 +153,7 @@ define(function(require, exports, module) {
             bindDraggableUI();
         })
     }
-    
+
     // 对外提供函数接口
     return {
         init: init,
