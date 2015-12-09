@@ -26,6 +26,7 @@ define(function(require, exports, module) {
         bindPageResizeEvent();
         bindBlockEvent();
         bindAddWorkEvent();
+        bindArrangeClass();
     }
 
     /**
@@ -159,5 +160,15 @@ define(function(require, exports, module) {
         init: init,
         calendar: _calendar,
         slideContainerWidth: _slideContainerWidth
+    }
+    
+    // 按讲师排列班级
+    function bindArrangeClass(){
+    	$("#arrange-class").click(function(){
+    		var box ='';
+    		$('.lecturer-container').remove();
+    		$('.ganttview').remove();
+          	
+    	})
     }
 })
