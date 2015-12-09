@@ -15,6 +15,9 @@ define(function(require, exports, module) {
 
     // 实例化模板模块对象
     var V = require('app/template-block');
+    
+    // 左侧栏高度
+    var vtHeaderHeight = 0;
 
     /**
      * 需要初始化的函数调用
@@ -26,6 +29,34 @@ define(function(require, exports, module) {
         bindPageResizeEvent();
         bindBlockEvent();
         bindAddWorkEvent();
+        onTodayPosition();
+        bindAddLessonEvent();
+    }
+    
+    /**
+     * 新建课程
+     * @author Shann 
+     */
+    function bindAddLessonEvent(){
+        $('#add-lesson').click(function(){
+            var itemTpl = V.fetchVtHeaderItem(),
+            addLessonModal = V.fetchAddLessonModal();
+            $('.unique').remove();
+            $('body').append($(addLessonModal).addClass('unique'));
+            $('#add-lesson-modal').modal();
+            //$('#ganttview-vtheader').prepend(itemTpl);
+        })
+    }
+
+    /**
+     * 定位今天
+     * @author Shann
+     */
+    function onTodayPosition() {
+        var t = new Date(),
+            str = t.getFullYear() + '-' + (t.getMonth() + 1) + '-' + t.getDate(),
+            left = $('[data-today="' + str + '"]').offset().left - 600;
+        $('#ganttview-slide-container').scrollLeft(left);
     }
 
     /**
@@ -35,6 +66,7 @@ define(function(require, exports, module) {
     function bindAddWorkEvent() {
         $('#add-work').click(function() {
             var data = require('http://127.0.0.1:8020/CAMS/data/lecturer.json'),
+                data1 = _.extend(data, require('http://127.0.0.1:8020/CAMS/data/lesson.json')),
                 tpl = V.fetchAddWorkModal(data);
             $('.unique').remove();
             $('body').append($(tpl).addClass('unique'));
@@ -49,8 +81,29 @@ define(function(require, exports, module) {
             // 显示模态框
             $('#add-work-modal').modal().on('hidden.bs.modal', function(e) {
                 var workType = $('#select-work-type').val(),
-                    lecturer = $('#select-lecturer').val();
-                
+                    lecturer = $('#select-lecturer').val(),
+                    startTime = $('#start-time').val(),
+                    endTime = $('#end-time').val(),
+                classVal = $('#select-class').val(),
+                    itemVal = $('#select-item').val(),
+                    oneDays = 24 * 3600 * 1000,
+                    diffDays = Math.ceil((new Date(endTime).getTime() - new Date(startTime).getTime()) / oneDays),
+                    dateArr = [],
+                    start_range = new Date(startTime);
+                for (var i = 0; i <= diffDays; i++) {
+                    var item = start_range.getFullYear() + '-' + (start_range.getMonth() + 1) + '-' + start_range.getDate();
+                    dateArr.push(item);
+                    start_range.setTime(start_range.getTime() + oneDays);
+                }
+
+                var item = $('[data-item="' + (classVal + '-' + itemVal) + '"]');
+
+                $.each(dateArr, function(k, v) {
+                    var row1 = item.find('[data-today="' + v + '"]').children().eq(0),
+                        row2 = item.find('[data-today="' + v + '"]').children().eq(1);
+                    row1.html(workType);
+                    row2.html(lecturer);
+                })
             });
         })
     }
@@ -60,7 +113,7 @@ define(function(require, exports, module) {
      * @author Shann
      */
     function bindBlockEvent() {
-        $('body').on('dblclick', '.editbox', function() {
+        $('body').on('click', '.editbox', function() {
             var data = require('http://127.0.0.1:8020/CAMS/data/lecturer.json'),
                 tpl = V.fetchEditModal(data),
                 row1 = $(this).children().eq(0),
@@ -68,7 +121,8 @@ define(function(require, exports, module) {
             $('.unique').remove();
             $('body').append($(tpl).addClass('unique'));
             $('#my-modal').modal();
-            $('#my-modal').on('hidden.bs.modal', function(e) {
+            $('#my-modal-save').click(function() {
+                $('#my-modal').modal('hide');
                 var workType = $('#select-work-type').val(),
                     lecturer = $('#select-lecturer').val();
                 row1.html(workType);

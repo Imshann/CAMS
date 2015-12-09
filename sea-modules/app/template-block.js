@@ -22,8 +22,28 @@ define(function(require, exports, module) {
         return Handlebars.compile(tpl)(data);
     }
 
+    /**
+     * 添加课程
+     * @author Shann
+     */
+    function fetchVtHeaderItem(data) {
+        var tpl = require("../templates/item.html");
+        return Handlebars.compile(tpl)(data);
+    }
+    
+    /**
+     * 添加课程模态框
+     * @author Shann
+     */
+    function fetchAddLessonModal(data){
+         var tpl = require("../templates/add-lesson-modal.html");
+        return Handlebars.compile(tpl)(data);
+    }
+
     return {
         fetchEditModal: fetchEditModal,
-        fetchAddWorkModal: fetchAddWorkModal
+        fetchAddWorkModal: fetchAddWorkModal,
+        fetchVtHeaderItem: fetchVtHeaderItem,
+        fetchAddLessonModal: fetchAddLessonModal
     }
 });

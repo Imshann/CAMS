@@ -66,6 +66,7 @@ div.ganttview-grid-row-cell {
     width: 100px;
     text-align: center;
     float: left;
+    cursor: pointer;
 }
 
 div.ganttview-hzheader {
@@ -116,14 +117,12 @@ div.ui-resizable {
 
 div.lecturer-container {
     border: 1px solid #999;
-    border-left: none;
-    border-bottom: none;
 }
 
 div.lecturer-block {
     line-height: 30px;
     height: 30px;
-    border-left: 1px solid #999;
+    border-right: 1px solid #999;
     text-align: center;
     font-size: 14px;
     border-bottom: 1px solid #999;
@@ -132,4 +131,8 @@ div.lecturer-block {
 div.ganttview-grid-row-cell .row {
     height: 50px;
     line-height: 50px;
+}
+
+div.button-container {
+    padding: 10px 5px 10px ;
 }

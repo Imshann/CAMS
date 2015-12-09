@@ -1,5 +1,5 @@
 <div class="row ganttview">
-    <div class="col-md-2 ganttview-vtheader">
+    <div class="col-md-2 ganttview-vtheader" id="ganttview-vtheader">
         {{#each lessons}}
         <div class="row ganttview-vtheader-item">
             <div class="col-md-6 ganttview-vtheader-item-name">{{lesson_name}}</div>
@@ -11,11 +11,11 @@
         </div>
         {{/each}}
     </div>
-    <div class="col-md-10 ganttview-slide-container">
+    <div class="col-md-10 ganttview-slide-container" id="ganttview-slide-container">
         <div class="row ganttview-hzheader" id="calendar"></div>
         <div class="row ganttview-grid">
             {{#each lessons}}
-            <div class="row ganttview-grid-row">
+            <div class="row ganttview-grid-row" data-item="{{lesson_name}}-上午">
                 {{#each ../calendar}} {{#each days}}
                 <div class="ganttview-grid-row-cell editbox" data-today="2015-{{../months}}-{{this}}">
                     <div class="row"></div>
@@ -23,17 +23,17 @@
                 </div>
                 {{/each}} {{/each}}
             </div>
-            <div class="row ganttview-grid-row">
+            <div class="row ganttview-grid-row" data-item="{{lesson_name}}-中午">
                 {{#each ../calendar}} {{#each days}}
-                <div class="ganttview-grid-row-cell editbox"  data-today="2015-{{../months}}-{{this}}">
+                <div class="ganttview-grid-row-cell editbox" data-today="2015-{{../months}}-{{this}}">
                     <div class="row"></div>
                     <div class="row"></div>
                 </div>
                 {{/each}} {{/each}}
             </div>
-            <div class="row ganttview-grid-row">
+            <div class="row ganttview-grid-row" data-item="{{lesson_name}}-下午">
                 {{#each ../calendar}} {{#each days}}
-                <div class="ganttview-grid-row-cell editbox"  data-today="2015-{{../months}}-{{this}}">
+                <div class="ganttview-grid-row-cell editbox" data-today="2015-{{../months}}-{{this}}">
                     <div class="row"></div>
                     <div class="row"></div>
                 </div>
@@ -41,27 +41,5 @@
             </div>
             {{/each}}
         </div>
-        <!--<div class="row ganttview-blocks">
-            {{#each lessons}}
-            <div class="row ganttview-block-container edit-employee">
-                <div class="ganttview-block ui-resizable ui-draggable">
-                    <div class="row">讲课</div>
-                    <div class="row">黄尚任</div>
-                </div>
-            </div>
-            <div class="row ganttview-block-container edit-employee">
-                <div class="ganttview-block ui-resizable ui-draggable">
-                    <div class="row">讲课</div>
-                    <div class="row">黄尚任</div>
-                </div>
-            </div>
-            <div class="row ganttview-block-container edit-employee">
-                <div class="ganttview-block ui-resizable ui-draggable">
-                    <div class="row">讲课</div>
-                    <div class="row">黄尚任</div>
-                </div>
-            </div>
-            {{/each}}
-        </div>-->
     </div>
 </div>

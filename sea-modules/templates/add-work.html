@@ -8,6 +8,26 @@
             <div class="modal-body">
                 <form class="form-horizontal">
                     <div class="form-group">
+                        <label for="select-class" class="col-sm-2 control-label">班级</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="select-class">
+                                {{#each lessons}}
+                                <option>{{lesson_name}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="select-item" class="col-sm-2 control-label">阶段</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="select-item">
+                                <option>上午</option>
+                                <option>下午</option>
+                                <option>晚上</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="start-time" class="col-sm-2 control-label">开始时间</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control datetimepicker" id="start-time" >
@@ -20,7 +40,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">工作</label>
+                        <label for="select-work-type" class="col-sm-2 control-label">工作</label>
                         <div class="col-sm-10">
                             <select class="form-control" id="select-work-type">
                                 <option>坐班</option>
@@ -29,7 +49,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">老师</label>
+                        <label for="select-lecturer" class="col-sm-2 control-label">老师</label>
                         <div class="col-sm-10">
                             <select class="form-control" id="select-lecturer">
                                 {{#each lecturers}}

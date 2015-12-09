@@ -18,7 +18,7 @@ module.exports = function(grunt) {
                 src: [
                     'sea-modules/jquery/1.11.1/jquery.min.js',
                     'sea-modules/jquery-ui/1.11.4/jquery-ui.min.js',
-                    'sea-modules/bootstrap/3.3.5/js/bootstrap.min.js',s
+                    'sea-modules/bootstrap/3.3.5/js/bootstrap.min.js',
                     'sea-modules/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js',
                     'sea-modules/seajs/3.0.0/sea.js',
                     'sea-modules/seajs/3.0.0/seajs-preload.js',
@@ -47,12 +47,6 @@ module.exports = function(grunt) {
                 }
             }
         }
-//      watch: {
-//          abc: {
-//              files: ['src/**/*.css', 'src/**/*.js'],
-//              tasks: ['concat', 'uglify', 'cssmin']
-//          }
-//      }
     });
 
     // 加载插件。
@@ -62,6 +56,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-css');
 
     // 默认被执行的任务列表。
-    grunt.registerTask('default', ['concat', 'cssmin',  'uglify']);
+    grunt.registerTask('default', ['concat', 'cssmin', 'uglify']);
 
 };
