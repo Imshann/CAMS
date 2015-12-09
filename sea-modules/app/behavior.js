@@ -57,6 +57,7 @@ define(function(require, exports, module) {
             str = t.getFullYear() + '-' + (t.getMonth() + 1) + '-' + t.getDate(),
             left = $('[data-today="' + str + '"]').offset().left - 600;
         $('#ganttview-slide-container').scrollLeft(left);
+        bindArrangeClass();
     }
 
     /**
@@ -213,5 +214,15 @@ define(function(require, exports, module) {
         init: init,
         calendar: _calendar,
         slideContainerWidth: _slideContainerWidth
+    }
+    
+    // 按讲师排列班级
+    function bindArrangeClass(){
+    	$("#arrange-class").click(function(){
+    		var box ='';
+    		$('.lecturer-container').remove();
+    		$('.ganttview').remove();
+          	
+    	})
     }
 })
